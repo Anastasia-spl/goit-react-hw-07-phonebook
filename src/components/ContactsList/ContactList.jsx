@@ -1,6 +1,7 @@
 import { createUseStyles } from 'react-jss';
 import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
+import Loader from '../Loader';
 
 const useStyles = createUseStyles({
   contactItem: {
@@ -11,26 +12,31 @@ const useStyles = createUseStyles({
   },
 });
 
-const ContactList = ({ filteredContacts, onDeleteContact }) => {
+const ContactList = ({ filteredContacts, onDeleteContact, isLoading }) => {
   const { contactItem, deleteBtn } = useStyles();
 
   return (
-    <ul>
-      {filteredContacts.map(({ name, number, id }) => (
-        <li key={id} className={contactItem}>
-          <span>
-            {name}: {number}
-          </span>
-          <button
-            type="button"
-            className={deleteBtn}
-            onClick={() => onDeleteContact(id)}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <>
+      {isLoading && (
+        <Loader type="Circles" color="#00BFFF" height={80} width={80} />
+      )}
+      <ul>
+        {filteredContacts.map(({ name, number, id }) => (
+          <li key={id} className={contactItem}>
+            <span>
+              {name}: {number}
+            </span>
+            <button
+              type="button"
+              className={deleteBtn}
+              onClick={() => onDeleteContact(id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
@@ -38,6 +44,7 @@ const mapStateToProps = state => ({
   contacts: contactsSelectors.getContacts(state),
   filter: contactsSelectors.getFilter(state),
   filteredContacts: contactsSelectors.getFilteredContacts(state),
+  isLoading: contactsSelectors.getLoader(state),
 });
 
 const mapDispatchToProps = dispatch => ({
