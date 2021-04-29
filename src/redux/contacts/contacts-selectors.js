@@ -4,6 +4,8 @@ const getContacts = state => state.contacts.items;
 
 const getFilter = state => state.contacts.filter;
 
+const getLoader = state => state.contacts.loading;
+
 const getFilteredContacts = createSelector([getFilter, getContacts],
   (filter, contacts) =>
     filter !== ''
@@ -12,5 +14,6 @@ const getFilteredContacts = createSelector([getFilter, getContacts],
       )
       : contacts);
 
+
 //eslint-disable-next-line 
-export default { getContacts, getFilter, getFilteredContacts }
+export default { getContacts, getFilter, getFilteredContacts, getLoader }

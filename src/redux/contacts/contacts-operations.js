@@ -1,6 +1,14 @@
 import axios from 'axios';
 import  contactsActions  from './contacts-actions'; 
-const { fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addContactRequest, addContactSuccess, addContactError, deleteContactRequest, deleteContactSuccess, deleteContactError } = contactsActions;
+const { fetchContactsRequest,
+  fetchContactsSuccess,
+   fetchContactsError,
+   addContactRequest,
+   addContactSuccess,
+   addContactError,
+   deleteContactRequest,
+    deleteContactSuccess,
+    deleteContactError } = contactsActions;
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
