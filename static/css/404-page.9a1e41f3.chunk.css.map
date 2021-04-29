@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Container/Container.module.scss"],"names":[],"mappings":"AAAA,4BACE,cAAe,CACf,aAAc","file":"404-page.9a1e41f3.chunk.css","sourcesContent":[".Container {\n  padding: 0 20px;\n  margin: 0 auto;\n}\n"]}
